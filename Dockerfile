@@ -1,0 +1,16 @@
+FROM ruby:2.5
+LABEL maintainer="u6k.apps@gmail.com"
+
+RUN apt-get update && \
+    apt-get install -y \
+        nodejs && \
+    apt-get clean
+
+WORKDIR /var/myapp
+
+COPY Gemfile .
+COPY Gemfile.lock .
+
+RUN bundle install
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
