@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    environment:
+      - "RAILS_ENV=production"
+      - "SECRET_KEY_BASE=${SECRET_KEY_BASE}"
+      - "VIRTUAL_HOST=railstutorial.u6k.me"
+      - "VIRTUAL_PORT=3000"
+      - "LETSENCRYPT_HOST=railstutorial.u6k.me"
+      - "LETSENCRYPT_EMAIL=u6k.apps@gmail.com"
+    ports:
+      - "3000:3000"
+
+networks:
+  default:
+    external:
+      name: documents_default
+
