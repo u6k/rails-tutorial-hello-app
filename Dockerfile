@@ -6,6 +6,7 @@ RUN apt-get update && \
         nodejs && \
     apt-get clean
 
+VOLUME /var/myapp
 WORKDIR /var/myapp
 
 COPY Gemfile .
